@@ -1,0 +1,208 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* ================= BACKGROUND ================= */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter: blur(3px) brightness(0.88) saturate(1.05);
+  transform: scale(1.06);
+}
+
+/* Corner image */
+.bg-corner {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 180px;
+  z-index: 1;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* ================= ROOT ================= */
+.qna-slides {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.4rem;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+/* ================= CARDS ================= */
+.yes_slides,
+.no_slide {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  padding: 2.4rem 2.1rem;
+  border-radius: 1.6rem;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* YES CARD */
+.yes_slides {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 240, 246, 0.9)
+  );
+
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* NO CARD */
+.no_slide {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 245, 248, 0.96),
+    rgba(255, 220, 230, 0.9)
+  );
+
+  box-shadow:
+    0 25px 50px rgba(255, 90, 130, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+  animation: shakeSoft 0.7s ease;
+}
+
+/* ================= EMOJI ================= */
+.yes_slides div:first-child {
+  font-size: 2.8rem;
+  margin-bottom: 0.9rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* ================= TEXT ================= */
+.yes_slides p,
+.no_slide p {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #61112f;
+  margin-bottom: 1.6rem;
+}
+
+/* ================= BUTTONS ================= */
+.qna-slides button {
+  padding: 0.7rem 1.9rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  background: linear-gradient(
+    135deg,
+    #ff6fa2,
+    #ff4d87
+  );
+
+  color: white;
+
+  box-shadow:
+    0 8px 22px rgba(255, 95, 150, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.qna-slides button:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.05);
+  box-shadow:
+    0 14px 32px rgba(255, 95, 150, 0.55);
+}
+
+.qna-slides button:active {
+  transform: scale(0.98);
+}
+
+/* ================= NO BUTTON ================= */
+.qna-slides button:last-of-type {
+  background: rgba(255, 95, 150, 0.18);
+  color: #a51447;
+
+  border: 1px solid rgba(255, 95, 150, 0.6);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 6px 14px rgba(255, 95, 150, 0.25);
+}
+
+.qna-slides button:last-of-type:hover {
+  background: rgba(255, 95, 150, 0.28);
+  box-shadow:
+    0 10px 22px rgba(255, 95, 150, 0.4);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shakeSoft {
+  0% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  70% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .yes_slides,
+  .no_slide {
+    padding: 2rem 1.6rem;
+    border-radius: 1.4rem;
+  }
+
+  .bg-corner {
+    width: 140px;
+  }
+}

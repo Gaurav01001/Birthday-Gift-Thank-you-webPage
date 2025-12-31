@@ -1,0 +1,115 @@
+/* ROOT */
+.page4-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+}
+
+/* BACKGROUND IMAGE */
+.page4-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page4-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter:
+    blur(14px)
+    brightness(0.75)
+    saturate(1.2);
+
+  transform: scale(1.1);
+}
+
+/* SPARKLES */
+.page4-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page4-sparkles::before,
+.page4-sparkles::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image:
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.12;
+  animation: sparkleMove 40s linear infinite;
+}
+
+.page4-sparkles::after {
+  background-size: 90px 90px;
+  animation-duration: 60s;
+}
+
+@keyframes sparkleMove {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-200px); }
+}
+
+/* VIGNETTE */
+.page4-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 200px rgba(0,0,0,0.65),
+    inset 0 0 80px rgba(0,0,0,0.35);
+}
+
+/* CANVAS LAYER (MOST IMPORTANT) */
+.page4-canvas {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+.page4-root {
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.page4-exit .page4-root {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.page4-exit .page4-root {
+  animation: pageFadeOut 0.9s ease forwards;
+}
+
+@keyframes pageFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+.glass-note {
+  max-width: 260px;
+  padding: 22px 20px;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+
+  border-radius: 16px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #222;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(0,0,0,0.08);
+}

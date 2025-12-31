@@ -1,0 +1,172 @@
+/* =========================
+   PAGE (THE SHEET ITSELF)
+   ========================= */
+
+.page {
+  width: 420px;
+  height: 560px;
+  position: relative;
+
+  background-color: #f9f6f1;
+
+  border-radius: 6px 10px 10px 6px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.04),
+    0 20px 40px rgba(0,0,0,0.25);
+border-radius: 10%;
+
+  transform-style: preserve-3d;
+}
+
+/* soft paper edge lighting */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -1px 0 rgba(0,0,0,0.05);
+
+  pointer-events: none;
+}
+
+/* subtle stacked-page illusion (right edge) */
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 16px;
+  height: 100%;
+
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.12),
+    rgba(0,0,0,0.03),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* =========================
+   PAGE CONTENT (INNER PAPER)
+   ========================= */
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 28px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: #f9f6f1;
+
+  /* extremely subtle paper grain */
+  background-image:
+    radial-gradient(
+      rgba(0,0,0,0.015) 1px,
+      transparent 0
+    );
+  background-size: 8px 8px;
+
+box-shadow:
+    inset 12px 0 18px rgba(0,0,0,0.06),
+    inset -6px 0 12px rgba(255,255,255,0.35),
+    inset 0 0 0 1px rgba(0,0,0,0.035),
+    inset 0 -14px 28px rgba(0,0,0,0.035);
+
+  position: relative;
+}
+
+/* =========================
+   IMAGE (PHOTO MOUNT)
+   ========================= */
+
+.page-content img {
+  width: 100%;
+  height: 400px;
+
+  object-fit: contain;
+
+  background-color: #ebe6df;
+  padding: 10px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.06),
+    0 10px 24px rgba(0,0,0,0.25);
+
+  transition: transform 0.4s ease;
+}
+
+/* subtle hover lift */
+.page:hover .page-content img {
+  transform: scale(1.02);
+}
+
+/* =========================
+   TEXT (HANDWRITTEN FEEL)
+   ========================= */
+
+.page-content p {
+  margin-top: 14px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+  color: #555;
+  text-align: center;
+  font-style: italic;
+}
+.book-wrapper {
+  transform: translateX(10px);
+}
+.page3-ui {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 14px;
+
+  padding: 10px 14px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.2);
+
+  z-index: 20;
+}
+.memory-gif {
+  width: auto;
+  max-width: 200px;
+  justify-content: center;
+  margin-top: 12px;
+object-fit: contain ;
+  border-radius: 14px;
+display: block;
+  margin: 12px auto 0 auto;
+  /* optional polish */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);;
+
+}
+.memory-gif {
+  opacity: 0.95;
+  filter: saturate(1.1);
+}
