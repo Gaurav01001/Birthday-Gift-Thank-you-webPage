@@ -74,7 +74,7 @@ pages.forEach((page) => {
     if (page.back) useTexture.preload(`/textures/${page.back}.jpg`);
   }
 });
-useTexture.preload(`/textures/background4.jpg`);
+useTexture.preload(`/textures/background6.jpg`);
 
 const Page = ({
   number,
@@ -105,7 +105,7 @@ const Page = ({
 
   const pictureRoughness =
     !isNote && (number === 0 || number === pages.length - 1)
-      ? useTexture(`/textures/background1.jpg`)
+      ? useTexture(`/textures/background6.jpg`)
       : null;
 
   const group = useRef();

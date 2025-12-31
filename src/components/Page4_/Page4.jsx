@@ -84,7 +84,7 @@ export default function Page4({ onEnd }) {
       
       {/* BACKGROUND IMAGE */}
       <div className="page4-bg">
-        <img src="/textures/background4.jpg" alt="background" />
+        <img src="/textures/background6.jpg" alt="background" />
       </div>
 
       {/* SPARKLES + VIGNETTE */}
